@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.automate.xml.Configuration;
+import com.automate.xml.XMLConfiguration;
 
 public abstract class AbstractBeanContextLoader implements BeanContextLoader {
 	
@@ -19,6 +20,7 @@ public abstract class AbstractBeanContextLoader implements BeanContextLoader {
 			
 	protected AbstractBeanContextLoader (){
 		this.clazzs = new HashMap<String, Class<?>>();
+		this.configuration = new XMLConfiguration();
 	}
 	
 	public BeanContextLoader build(String resource){
@@ -41,6 +43,7 @@ public abstract class AbstractBeanContextLoader implements BeanContextLoader {
 	
 	public BeanContextLoader build(Reader reader){
 		
+		configuration.parse(reader);
 		return this;
 	}
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="automate-beans" 
+	xmlns:tns="automate-beans" 
+	elementFormDefault="qualified">
+	
+	<attributeGroup name="beanAttr">
+		<attribute name="name" type="string" use="required"/>
+	</attributeGroup>
+	
+	<attributeGroup name="methodAttr">
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="paramsType" type="string" use="optional"/>
+		<attribute name="returnType" type="string" use="optional"/>
+	</attributeGroup>
+	
+	<attributeGroup name="fieldAttr">
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="type" type="string" use="required"/>
+		<attribute name="value" type="string" use="optional"/>
+	</attributeGroup>
+	
+	<complexType name="method">
+		<attributeGroup ref="tns:methodAttr"></attributeGroup>
+	</complexType>
+	
+	<complexType name="field">
+		<attributeGroup ref="tns:fieldAttr"></attributeGroup>
+	</complexType>
+	
+	<complexType name="bean">
+		<sequence>
+			<element name="method" type="tns:method" minOccurs="0" maxOccurs="unbounded"></element>
+			<element name="field" type="tns:field" minOccurs="0" maxOccurs="unbounded"></element>
+		</sequence>
+		<attributeGroup ref="tns:beanAttr"></attributeGroup>
+	</complexType>
+	
+	<element name="beans">
+		<complexType>
+			<sequence minOccurs="1" maxOccurs="unbounded">
+				<element name="bean" type="tns:bean"></element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns="automate-beans" 
+	   xsi:schemaLocation="automate-beans automate-beans.xsd">
+	<bean name="11">
+		<method name="m"></method>
+		<field name="aa" type="string"></field>
+	</bean>
+	
+	<bean name="22"></bean>
+	
+	<bean name="3"></bean>
+</beans>
